@@ -91,15 +91,15 @@ namespace Logistics.Controllers
         public ActionResult StockInfo()
         {
             var stock = from b in db.Stock
-                          where b.StockStatus == 1
+                          where b.StockStatus == 1 && b.Storage==1
                           select b;
-            return View(stock .ToList());
+            return View(stock.ToList());
         }
 
         // POST: Storage/StockInfo
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult StockInfo(int? id)
+        public ActionResult Outbound(int? id)
         {
             DateTime date = System.DateTime.Now;
             //创建仓储信息单
