@@ -20,19 +20,22 @@ namespace Logistics.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult CreateBooking()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult CreateBooking(CommunicateModel model)
         {
-
             model.BookingModel.BookStartTime = System.DateTime.Now;
-            return View();
+            model.BookingModel.CourierNo = 1;
+            model.BookingModel.Status = 0;
+            db.Booking.Add(model.BookingModel);
+            db.SaveChanges();
+            return RedirectToAction("../Home/ManagerIndex");
         }
     }
 }
