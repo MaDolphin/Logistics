@@ -606,7 +606,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\CommunicateModels\" />
     <Folder Include="Views\CourierModels\" />
-    <Folder Include="Views\Home\NetWorkModels\" />
+    <Folder Include="Views\NetWorkModels\" />
     <Folder Include="Views\StoragerModels\" />
   </ItemGroup>
   <ItemGroup>

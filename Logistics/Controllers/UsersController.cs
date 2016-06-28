@@ -19,16 +19,19 @@ namespace Logistics.Controllers
         {
             return View(db.User.ToList());
         }
-        public ActionResult Login([Bind(Include = "UserName,Password")] User user)
+        public ActionResult Login([Bind(Include = "Account,Password")] User user)
         {
             var result = from v in db.User
-                         where v.UserName == user.UserName && v.Password == user.Password
+                         where v.Account == user.Account && v.Password == user.Password
                          select v;
-            if (result.FirstOrDefault() != null || true)
+            if (result.FirstOrDefault() != null)
             {
-                if (Session["user"] != "")
+                User resUser = db.User.Find(user.Account);
+                if (Session["Account"] != "")
                 {
-                    this.Session["user"] = user;
+                    this.Session["Account"] = resUser.Account;
+                    this.Session["UserName"] = resUser.UserName;
+                    this.Session["authority"] = resUser.Permissions;
                 }
                 Session.Timeout = 30;
                 return RedirectToAction("../Home/ManagerIndex");
