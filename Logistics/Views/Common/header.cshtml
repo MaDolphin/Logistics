@@ -216,9 +216,10 @@
                 <li class="dropdown user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img alt="" src="images/avatar1_small.jpg" />
-                        <c:if test="${sessionScope.teacher != null}">
+                       <span>@((Logistics.Models.User)Session["user"].UserName)</span> 
+                        @if(user)
                             <span class="username">${sessionScope.teacher.teaName}</span>
-                        </c:if>
+                        </if>
                         <c:if test="${sessionScope.admin != null}">
                             <span class="username">${sessionScope.admin.adminName}</span>
                         </c:if>
