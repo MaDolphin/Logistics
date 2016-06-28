@@ -602,13 +602,14 @@
     <Content Include="Views\CoustomerModels\Complaint.cshtml" />
     <Content Include="Views\CoustomerModels\Index.cshtml" />
     <Content Include="Views\CoustomerModels\Process.cshtml" />
+    <Content Include="Views\StoragerModels\Stocking.cshtml" />
+    <Content Include="Views\StoragerModels\StockInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CommunicateModels\" />
     <Folder Include="Views\CourierModels\" />
     <Folder Include="Views\NetWorkModels\" />
-    <Folder Include="Views\StoragerModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
