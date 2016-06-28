@@ -126,7 +126,7 @@
                                             <label class="control-label">取件时间</label>
                                             <div class="controls">
                                                 <div>
-                                                    @Html.EditorFor(model => model.BookingModel.BookGetTime, new { htmlAttributes = new { @class = "span3 m-wrap", @type = "datetime" } })
+                                                    @Html.EditorFor(model => model.BookingModel.BookGetTime, new { htmlAttributes = new { @class = "span3 m-wrap", @type = "datetime-local" } })
                                                     @Html.ValidationMessageFor(model => model.BookingModel.BookGetTime, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>

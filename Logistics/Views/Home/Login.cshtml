@@ -54,7 +54,7 @@
                 <div class="controls">
                     <div class="input-icon left">
                         <i class="icon-lock"></i>
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "m-wrap placeholder-no-fix", @placeholder = "密码" } })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "m-wrap placeholder-no-fix", @placeholder = "密码",@type = "password" } })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>

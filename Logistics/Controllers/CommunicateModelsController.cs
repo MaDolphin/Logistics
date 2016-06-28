@@ -30,6 +30,7 @@ namespace Logistics.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateBooking(CommunicateModel model)
         {
+
             model.BookingModel.BookStartTime = System.DateTime.Now;
             return View();
         }
