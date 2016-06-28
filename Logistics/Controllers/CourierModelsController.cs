@@ -37,5 +37,10 @@ namespace Logistics.Controllers
             db.SaveChanges();
             return RedirectToAction("GetPackage");
         }
+
+        public ActionResult AddPackageInfo()
+        {
+            return View();
+        }
     }
 }

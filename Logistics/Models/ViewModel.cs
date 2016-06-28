@@ -38,7 +38,7 @@ namespace Logistics.Models
     {
         public IEnumerable<Booking> BookingModel { get; set; }
 
-        public IEnumerable<LogDetail> LogDetailModel { get; set; }
+        public LogDetail LogDetailModel { get; set; }
 
         public IEnumerable<Process> ProcessModel { get; set; }
 

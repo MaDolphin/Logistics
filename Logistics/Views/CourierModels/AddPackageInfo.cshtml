@@ -1,0 +1,317 @@
+﻿@model Logistics.Models.CourierModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<!-- BEGIN HEAD -->
+<head>
+    <title>包裹信息录入</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="../media/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="../media/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../media/css/style-metro.css" rel="stylesheet" type="text/css" />
+    <link href="../media/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../media/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="../media/css/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="../media/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="../media/css/bootstrap-fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/clockface.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/bootstrap-toggle-buttons.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../media/css/multi-select-metro.css" />
+    <link href="../media/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL STYLES -->
+    <link rel="shortcut icon" href="../media/image/backstage/favicon.ico" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+    <!-- BEGIN HEADER -->
+    @RenderPage("../Common/header.cshtml");
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar nav-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            @RenderPage("../Common/menu.cshtml");
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        <div class="page-content">
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                        <h3 class="page-title">
+                            包裹信息录入
+                        </h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="#">主页</a>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">快递员</a>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">包裹信息录入</a>
+                            </li>
+                        </ul>
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN PAGE CONTENT-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @using (Html.BeginForm("CreateBooking", "CommunicateModels", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row-fluid">
+                                    <div class="form-horizontal">
+                                        <div class="col-md-6">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><span class="glyphicon glyphicon-envelope"></span> 寄件人信息</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="control-group">
+                                                        <label class="control-label">寄件人姓名</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.FromName, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.FromName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">寄件人电话</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.FromTel, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.FromTel, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label">始发地省份</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.FromProvince, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.FromProvince, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">始发地城市</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.FromCity, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.FromCity, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">始发地区县</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.FromStatue, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.FromStatue, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label">始发地地址</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.FromAddress, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.FromAddress, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="panel panel-success">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><span class="glyphicon glyphicon-envelope"></span> 收件人信息</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="control-group">
+                                                        <label class="control-label">收件人姓名</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.ToName, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.ToName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">收件人电话</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.ToTel, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.ToTel, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label">目的地省份</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.ToProvince, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.ToProvince, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">目的地城市</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.ToCity, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.ToCity, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">目的地区县</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.ToStatue, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.ToStatue, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label">目的地地址</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.ToAddress, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.ToAddress, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="panel panel-danger">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><span class="glyphicon glyphicon-envelope"></span> 其他信息</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="control-group">
+                                                        <label class="control-label">付款方式</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.Pay, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.Pay, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">品名</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.PackName, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.PackName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">重量</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.Weight, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.Weight, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label">运费</label>
+                                                        <div class="controls">
+                                                            @Html.EditorFor(model => model.LogDetailModel.Momey, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.ValidationMessageFor(model => model.LogDetailModel.Momey, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">提交</button>
+                                        <button type="button" class="btn">取消</button>
+                                    </div>
+                                </div>
+                            }
+                            <!-- END FORM-->
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    @RenderPage("../Common/footer.cshtml");
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="../media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="../media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="../media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="../media/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="../media/js/excanvas.min.js"></script>
+    <script src="../media/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="../media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../media/js/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="../media/js/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="../media/js/jquery.uniform.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="../media/js/ckeditor.js"></script>
+    <script type="text/javascript" src="../media/js/bootstrap-fileupload.js"></script>
+    <script type="text/javascript" src="../media/js/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="../media/js/select2.min.js"></script>
+    <script type="text/javascript" src="../media/js/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="../media/js/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="../media/js/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="../media/js/jquery.toggle.buttons.js"></script>
+    <script type="text/javascript" src="../media/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="../media/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="../media/js/clockface.js"></script>
+    <script type="text/javascript" src="../media/js/date.js"></script>
+    <script type="text/javascript" src="../media/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="../media/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="../media/js/bootstrap-timepicker.js"></script>
+    <script type="text/javascript" src="../media/js/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript" src="../media/js/jquery.input-ip-address-control-1.0.min.js"></script>
+    <script type="text/javascript" src="../media/js/jquery.multi-select.js"></script>
+    <script src="../media/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../media/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="../media/js/app.js"></script>
+    <script src="../media/js/form-components.js"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+            // initiate layout and plugins
+            App.init();
+            FormComponents.init();
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

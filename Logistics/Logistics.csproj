@@ -606,6 +606,7 @@
     <Content Include="Views\StoragerModels\Stocking.cshtml" />
     <Content Include="Views\CommunicateModels\CreateBooking.cshtml" />
     <Content Include="Views\CourierModels\GetPackage.cshtml" />
+    <Content Include="Views\CourierModels\AddPackageInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
