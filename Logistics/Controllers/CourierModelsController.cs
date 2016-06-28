@@ -28,5 +28,14 @@ namespace Logistics.Controllers
             model.BookingModel = list.ToList();
             return View(model);
         }
+
+        public ActionResult GetPackageMethod(int? id)
+        {
+            Booking booking = db.Booking.Find(id);
+            booking.Status = 1;
+            db.Entry(booking).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("GetPackage");
+        }
     }
 }
