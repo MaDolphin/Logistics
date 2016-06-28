@@ -605,10 +605,10 @@
     <Content Include="Views\StoragerModels\StockInfo.cshtml" />
     <Content Include="Views\StoragerModels\Stocking.cshtml" />
     <Content Include="Views\CommunicateModels\CreateBooking.cshtml" />
+    <Content Include="Views\CourierModels\GetPackage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CourierModels\" />
     <Folder Include="Views\NetWorkModels\" />
   </ItemGroup>
   <ItemGroup>
