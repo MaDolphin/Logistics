@@ -598,13 +598,15 @@
     <Content Include="Views\Common\header.cshtml" />
     <Content Include="Views\Common\footer.cshtml" />
     <Content Include="Views\Common\menu.cshtml" />
+    <Content Include="Views\CoustomerModels\Complaint.cshtml" />
+    <Content Include="Views\CoustomerModels\Index.cshtml" />
+    <Content Include="Views\CoustomerModels\Process.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CommunicateModels\" />
     <Folder Include="Views\CourierModels\" />
-    <Folder Include="Views\CoustomerModels\" />
-    <Folder Include="Views\NetWorkModels\" />
+    <Folder Include="Views\Home\NetWorkModels\" />
     <Folder Include="Views\StoragerModels\" />
   </ItemGroup>
   <ItemGroup>
