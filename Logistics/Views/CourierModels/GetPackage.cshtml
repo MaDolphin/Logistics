@@ -111,7 +111,7 @@
                                             <td class="hidden-480">
                                                 @if (item.Status == 0)
                                                 {
-                                                    <a href="javascript:if(confirm('确认收件吗?'))window.location='resetPasswordTeacher.action?teaId=${tea.teaId}'" class="btn mini red"><i class="icon-edit"></i> 重置密码</a>
+                                                    @Html.ActionLink("确认收件", "GetPackageMethod", "CourierModels", new { id = item.BookNo }, new {@class = "btn mini red" })
                                                 }
                                             </td>
                                         </tr>
