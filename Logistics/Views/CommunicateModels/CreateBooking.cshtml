@@ -92,6 +92,7 @@
                             <!-- BEGIN FORM-->
                             @using (Html.BeginForm("CreateBooking", "CommunicateModels", FormMethod.Post))
                             {
+                                @Html.AntiForgeryToken()
                                 <div class="row-fluid">
                                     <div class="form-horizontal">
                                         <div class="control-group">
