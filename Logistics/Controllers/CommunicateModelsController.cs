@@ -19,5 +19,19 @@ namespace Logistics.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateBooking()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateBooking(CommunicateModel model)
+        {
+            model.BookingModel.BookStartTime = System.DateTime.Now;
+            return View();
+        }
     }
 }
