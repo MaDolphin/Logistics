@@ -26,5 +26,7 @@ namespace Logistics.Models
         public DateTime? BookGetTime { get; set; }
 
         public DateTime? BookStartTime { get; set; }
+
+        public int? CourierNo { get; set; }
     }
 }
