@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logistics.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,16 @@ namespace Logistics.Controllers
         {
             return View();
         }
+
+        public ActionResult ManagerIndex()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
     }
 }

@@ -19,6 +19,25 @@ namespace Logistics.Controllers
         {
             return View(db.User.ToList());
         }
+        public ActionResult Login([Bind(Include = "UserName,Password")] User user)
+        {
+            var result = from v in db.User
+                         where v.UserName == user.UserName && v.Password == user.Password
+                         select v;
+            if (result.FirstOrDefault() != null)
+            {
+                if (Session["user"] != "")
+                {
+                    this.Session["user"] = user;
+                }
+                Session.Timeout = 30;
+                return RedirectToAction("../Home/ManagerIndex");
+            }
+            else
+            {
+                return Content("<script >alert('账号或密码有误！');history.go(-1)</script >", "text/html");
+            }
+        }
 
         // GET: Users/Details/5
         public ActionResult Details(int? id)

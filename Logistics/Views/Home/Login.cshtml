@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Logistics.Models.User
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -36,13 +37,15 @@
     <!-- BEGIN LOGIN -->
     <div class="content">
         <!-- BEGIN LOGIN FORM -->
-        <form class="form-vertical login-form" action="login.action" method="post">
+        @using (Html.BeginForm("Login", "Users", FormMethod.Post))
+        {
             <h3 class="form-title" style="font-family: 微软雅黑;text-align: center">登录</h3>
             <div class="control-group">
                 <div class="controls">
                     <div class="input-icon left">
                         <i class="icon-user"></i>
-                        <input class="m-wrap placeholder-no-fix" style="height: 30px;width: 280px" type="text" placeholder="工号" name="EmpId" id="EmpId" />
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "m-wrap placeholder-no-fix", @placeholder = "工号" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -51,7 +54,8 @@
                 <div class="controls">
                     <div class="input-icon left">
                         <i class="icon-lock"></i>
-                        <input class="m-wrap placeholder-no-fix" style="height: 30px;width: 280px" type="password" placeholder="密码" name="Password" id="Password" />
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "m-wrap placeholder-no-fix", @placeholder = "密码" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -63,15 +67,10 @@
                     登录 <i class="m-icon-swapright m-icon-white"></i>
                 </button>
             </div>
-        </form>
+        }
         <!-- END LOGIN FORM -->
     </div>
     <!-- END LOGIN -->
-    <!-- BEGIN COPYRIGHT -->
-    <div class="copyright">
-        2013 &copy; Metronic. Admin Dashboard Template.
-    </div>
-    <!-- END COPYRIGHT -->
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- BEGIN CORE PLUGINS -->
     <script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
