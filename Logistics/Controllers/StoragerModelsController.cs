@@ -88,7 +88,7 @@ namespace Logistics.Controllers
 
         //查询库存、出库
         // GET: Users/Complaint
-        public ActionResult Stocking()
+        public ActionResult StockInfo()
         {
             var stock = from b in db.Stock
                           where b.StockStatus == 1
@@ -101,7 +101,7 @@ namespace Logistics.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Stocking(int? id)
+        public ActionResult StockInfo(int? id)
         {
             DateTime date = System.DateTime.Now;
             //创建仓储信息单
@@ -134,7 +134,7 @@ namespace Logistics.Controllers
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Stocking");
+            return RedirectToAction("StockInfo");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Logistics.Models.CoustomerModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -86,7 +87,7 @@
                                         <div class="control-group">
                                             <label class="control-label">预约人姓名</label>
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.BookingModel.BookName, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.EditorFor(model => model.CoustomerModel.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" } })
                                                 @Html.ValidationMessageFor(model => model.BookingModel.BookName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
