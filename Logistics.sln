@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistics", "Logistics\Logistics.csproj", "{8DAC340F-AB5E-4D8F-B817-FA78FE87E6A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net_Pj", "..\..\..\Documents\Visual Studio 2013\Projects\Net_Pj\Net_Pj\Net_Pj.csproj", "{9007AD4C-5CCD-49C5-BFC0-C359B9BA18B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8DAC340F-AB5E-4D8F-B817-FA78FE87E6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DAC340F-AB5E-4D8F-B817-FA78FE87E6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DAC340F-AB5E-4D8F-B817-FA78FE87E6A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9007AD4C-5CCD-49C5-BFC0-C359B9BA18B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9007AD4C-5CCD-49C5-BFC0-C359B9BA18B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9007AD4C-5CCD-49C5-BFC0-C359B9BA18B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9007AD4C-5CCD-49C5-BFC0-C359B9BA18B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
