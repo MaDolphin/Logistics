@@ -1,4 +1,4 @@
-﻿@model Logistics.Models.CoustomerModel
+﻿@model Logistics.Models.Complaint 
 @{
     Layout = null;
 }
@@ -85,42 +85,33 @@
                                 <div class="row-fluid">
                                     <div class="form-horizontal">
                                         <div class="control-group">
-                                            <label class="control-label">预约人姓名</label>
+                                            <label class="control-label">投诉快递单号</label>
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.CoustomerModel.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" } })
-                                                @Html.ValidationMessageFor(model => model.BookingModel.BookName, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">联系电话</label>
+                                            <label class="control-label">投诉人姓名</label>
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.BookingModel.BookTel, new { htmlAttributes = new { @class = "span3 m-wrap" } })
-                                                @Html.ValidationMessageFor(model => model.BookingModel.BookTel, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.ComplaintName, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.ComplaintName , "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">取件地址</label>
+                                            <label class="control-label">投诉人电话</label>
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.BookingModel.BookAddress, new { htmlAttributes = new { @class = "span3 m-wrap" } })
-                                                @Html.ValidationMessageFor(model => model.BookingModel.BookAddress, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.ComplaintTel , new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.ComplaintTel , "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">货品内容</label>
+                                            <label class="control-label">投诉内容</label>
                                             <div class="controls">
-                                                @Html.EditorFor(model => model.BookingModel.BookItems, new { htmlAttributes = new { @class = "span3 m-wrap" } })
-                                                @Html.ValidationMessageFor(model => model.BookingModel.BookItems, "", new { @class = "text-danger" })
+                                                @Html.TextAreaFor(model => model.ComplaintContent)
+                                                @Html.ValidationMessageFor(model => model.ComplaintContent, "", new { @class = "text-danger" })
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">取件时间</label>
-                                            <div class="controls">
-                                                <div>
-                                                    @Html.EditorFor(model => model.BookingModel.BookGetTime, new { htmlAttributes = new { @class = "span3 m-wrap", @type = "datetime" } })
-                                                    @Html.ValidationMessageFor(model => model.BookingModel.BookGetTime, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </div>                                       
                                     </div>
                                     <div class="form-actions">
                                         <button type="submit" class="btn blue">提交</button>
@@ -191,7 +182,7 @@
 		   Index.initChat();
 		   Index.initMiniCharts();
 		   Index.initDashboardDaterange();
-		   Index.initIntro();
+		   //Index.initIntro();
 		});
     </script>
     <!-- END JAVASCRIPTS -->

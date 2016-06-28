@@ -65,7 +65,7 @@ namespace Logistics.Controllers
 
                 //更改流程单信息
                 Process pro = db.Process.Find(sto.PackNo);
-                if (pro != null)
+                if (pro != null && pro.Status == 0)
                 {
                     Storage  storage =(Storage ) from b in db.Storage
                                       where b.PackNo == sto.PackNo && b.StorageTime==date
@@ -121,7 +121,7 @@ namespace Logistics.Controllers
 
             //更改流程单信息
             Process pro = db.Process.Find(sto.PackNo);
-            if (pro != null)
+            if (pro != null&& pro.Status ==0)
             {
                 Storage storage = (Storage)from b in db.Storage
                                            where b.PackNo == sto.PackNo && b.StorageTime == date
