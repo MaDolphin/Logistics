@@ -1,7 +1,4 @@
 ﻿@model Logistics.Models.Complaint 
-@{
-    Layout = null;
-}
 <!DOCTYPE html>
 <html>
 <!-- BEGIN HEAD -->
@@ -80,8 +77,9 @@
                         <!-- BEGIN SAMPLE FORM PORTLET-->
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            @using (Html.BeginForm("CreateBooking", "CommunicateModels", FormMethod.Post))
+                            @using (Html.BeginForm("Complaint", "CoustomerModels", FormMethod.Post))
                             {
+                                @Html.AntiForgeryToken()
                                 <div class="row-fluid">
                                     <div class="form-horizontal">
                                         <div class="control-group">

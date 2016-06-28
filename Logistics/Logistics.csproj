@@ -249,6 +249,7 @@
     <Content Include="media\css\login.css" />
     <Content Include="media\css\multi-select-metro.css" />
     <Content Include="media\css\news.css" />
+    <Content Include="media\css\PackNoform.css" />
     <Content Include="media\css\pricing-tables.css" />
     <Content Include="media\css\print.css" />
     <Content Include="media\css\profile.css" />
@@ -600,7 +601,6 @@
     <Content Include="Views\Common\footer.cshtml" />
     <Content Include="Views\Common\menu.cshtml" />
     <Content Include="Views\CoustomerModels\Complaint.cshtml" />
-    <Content Include="Views\CoustomerModels\Index.cshtml" />
     <Content Include="Views\CoustomerModels\Process.cshtml" />
     <Content Include="Views\StoragerModels\StockInfo.cshtml" />
     <Content Include="Views\StoragerModels\Stocking.cshtml" />

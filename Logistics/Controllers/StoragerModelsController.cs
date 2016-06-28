@@ -22,21 +22,20 @@ namespace Logistics.Controllers
 
 
         //入库
-        // GET: Users/Complaint
+        // GET: Storage/Stocking
         public ActionResult Stocking()
         {
             return View();
         }
 
-        // POST: Users/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        // POST: Storage/Stocking
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Stocking([Bind(Include = "PackNo")] Storage sto)
         {
             if (ModelState.IsValid)
             {
+                int packno = (int)sto.PackNo;
                 DateTime date=System .DateTime .Now ;
                 //创建仓储信息单
                 sto.Storage1 = (int)Session["Account"];
@@ -54,17 +53,18 @@ namespace Logistics.Controllers
                 }
                 else
                 {
-                    stock.PackNo = (int)sto.PackNo;
-                    stock.Storage = (int)Session["Account"];
-                    stock.StockTime = date;
-                    stock.StockStatus = 1;
-                    db.Stock.Add(stock);
+                    Stock stock1 = new Stock ();
+                    stock1.PackNo = packno ;
+                    stock1.Storage = (int)Session["Account"];
+                    stock1.StockTime = date;
+                    stock1.StockStatus = 1;
+                    db.Stock.Add(stock1);
                     db.SaveChanges();
 
                 }
 
                 //更改流程单信息
-                Process pro = db.Process.Find(sto.PackNo);
+                Process pro = db.Process.Find(packno);
                 if (pro != null && pro.Status == 0)
                 {
                     Storage  storage =(Storage ) from b in db.Storage
@@ -78,7 +78,7 @@ namespace Logistics.Controllers
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("StockInfo");
             }
 
             return View(sto);
@@ -87,7 +87,7 @@ namespace Logistics.Controllers
 
 
         //查询库存、出库
-        // GET: Users/Complaint
+        // GET: Storage/StockInfo
         public ActionResult StockInfo()
         {
             var stock = from b in db.Stock
@@ -96,9 +96,7 @@ namespace Logistics.Controllers
             return View(stock .ToList());
         }
 
-        // POST: Users/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        // POST: Storage/StockInfo
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult StockInfo(int? id)
