@@ -598,18 +598,10 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Bookings\Create.cshtml" />
-    <Content Include="Views\Complaints\Create.cshtml" />
-    <Content Include="Views\Deliveries\Create.cshtml" />
-    <Content Include="Views\Dispatches\Create.cshtml" />
-    <Content Include="Views\Dispatches\Details.cshtml" />
-    <Content Include="Views\LogDetails\Create.cshtml" />
-    <Content Include="Views\Processes\Details.cshtml" />
-    <Content Include="Views\Storages\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Storages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
