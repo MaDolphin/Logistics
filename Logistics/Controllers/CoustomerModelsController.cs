@@ -46,9 +46,14 @@ namespace Logistics.Controllers
 
 
         // GET: Users/Process
-        public ActionResult Process()
+        public ActionResult Process([Bind(Include = "PackNo")] Process process)
         {
-            return View();
+            Process pro = db.Process.Find(process.PackNo);
+            if (pro == null)
+            {
+                return Content("<script >alert('单号不存在！');history.go(-1)</script >", "text/html");
+            }
+            return View(pro);
         }
 
        

@@ -602,13 +602,11 @@
     <Content Include="Views\CoustomerModels\Complaint.cshtml" />
     <Content Include="Views\CoustomerModels\Index.cshtml" />
     <Content Include="Views\CoustomerModels\Process.cshtml" />
-    <Content Include="Views\CommunicateModels\CreateBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CourierModels\" />
     <Folder Include="Views\NetWorkModels\" />
-    <Folder Include="Views\StoragerModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
