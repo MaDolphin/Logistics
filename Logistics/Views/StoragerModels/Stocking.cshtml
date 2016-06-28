@@ -78,6 +78,7 @@
                 <div style="padding: 1%;background: white">
                     @using (Html.BeginForm("Stocking", "StoragerModels", FormMethod.Post, new { @class = "form-wrapper cf" }))
                     {
+                        @Html.AntiForgeryToken()
                             @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" ,@placeholder="请输入快递单号"} })
                             @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
                         
