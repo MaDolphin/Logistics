@@ -168,6 +168,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BookingsController.cs" />
+    <Compile Include="Controllers\ComplaintsController.cs" />
+    <Compile Include="Controllers\DeliveriesController.cs" />
+    <Compile Include="Controllers\DispatchesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogDetailsController.cs" />
+    <Compile Include="Controllers\ProcessesController.cs" />
     <Compile Include="Controllers\StoragesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -590,10 +597,18 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Bookings\Create.cshtml" />
+    <Content Include="Views\Complaints\Create.cshtml" />
+    <Content Include="Views\Deliveries\Create.cshtml" />
+    <Content Include="Views\Dispatches\Create.cshtml" />
+    <Content Include="Views\Dispatches\Details.cshtml" />
+    <Content Include="Views\LogDetails\Create.cshtml" />
+    <Content Include="Views\Processes\Details.cshtml" />
+    <Content Include="Views\Storages\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Storages\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

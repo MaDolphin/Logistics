@@ -1,0 +1,146 @@
+﻿@model Logistics.Models.Process
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Process</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliveryNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliveryNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Network)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Network)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliveryTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliveryTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StorageNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StorageNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Storage)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Storage)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StorageTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StorageTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OutboundNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OutboundNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OutboundStorage)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OutboundStorage)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OutboundTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OutboundTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DispatchNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DispatchNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CourierNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CourierNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DispatchTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DispatchTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UpdateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PackNo }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
