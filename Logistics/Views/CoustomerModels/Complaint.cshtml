@@ -47,7 +47,94 @@
         <!-- BEGIN PAGE -->
         <div class="page-content">
             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-            
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                        <h3 class="page-title">
+                            预约登记
+                        </h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="adminMain.action">主页</a>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">业务员</a>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">预约登记</a>
+                            </li>
+                        </ul>
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN PAGE CONTENT-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @using (Html.BeginForm("CreateBooking", "CommunicateModels", FormMethod.Post))
+                            {
+                                <div class="row-fluid">
+                                    <div class="form-horizontal">
+                                        <div class="control-group">
+                                            <label class="control-label">预约人姓名</label>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.BookingModel.BookName, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.BookingModel.BookName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">联系电话</label>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.BookingModel.BookTel, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.BookingModel.BookTel, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">取件地址</label>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.BookingModel.BookAddress, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.BookingModel.BookAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">货品内容</label>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.BookingModel.BookItems, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.BookingModel.BookItems, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">取件时间</label>
+                                            <div class="controls">
+                                                <div>
+                                                    @Html.EditorFor(model => model.BookingModel.BookGetTime, new { htmlAttributes = new { @class = "span3 m-wrap", @type = "datetime" } })
+                                                    @Html.ValidationMessageFor(model => model.BookingModel.BookGetTime, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">提交</button>
+                                        <button type="button" class="btn">取消</button>
+                                    </div>
+                                </div>
+                            }
+                            <!-- END FORM-->
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE -->
         </div>
         <!-- END PAGE -->
     </div>
