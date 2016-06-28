@@ -19,6 +19,8 @@ namespace Logistics.Models
 
         public IEnumerable<Process> ProcessModel { get; set; }
 
+        public IEnumerable<Stock> StockModel { get; set; }
+
         public IEnumerable<Storage> StorageModel { get; set; }
 
         public IEnumerable<User> UserModel { get; set; }

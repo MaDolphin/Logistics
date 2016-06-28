@@ -18,6 +18,7 @@ namespace Logistics.Models
         public virtual DbSet<Dispatch> Dispatch { get; set; }
         public virtual DbSet<LogDetail> LogDetail { get; set; }
         public virtual DbSet<Process> Process { get; set; }
+        public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<Storage> Storage { get; set; }
         public virtual DbSet<User> User { get; set; }
 
