@@ -20,15 +20,13 @@ namespace Logistics.Controllers
             return View();
         }
 
-        // GET: Users/Complaint
+        // GET: Coustomer/Complaint
         public ActionResult Complaint()
         {
             return View();
         }
 
-        // POST: Users/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        // POST: Coustomer/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Complaint([Bind(Include = "PackNo,ComplaintName,ComplaintTel,ComplaintContent")] Complaint comp)
@@ -37,7 +35,7 @@ namespace Logistics.Controllers
             {
                 db.Complaint.Add(comp);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Home/Index");
             }
 
             return View(comp);
@@ -45,7 +43,7 @@ namespace Logistics.Controllers
 
 
 
-        // GET: Users/Process
+        // GET: Coustomer/Process
         public ActionResult Process([Bind(Include = "PackNo")] Process process)
         {
             Process pro = db.Process.Find(process.PackNo);
