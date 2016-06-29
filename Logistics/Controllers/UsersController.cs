@@ -31,7 +31,7 @@ namespace Logistics.Controllers
                 {
                     this.Session["Account"] = resUser.Account;
                     this.Session["UserName"] = resUser.UserName;
-                    this.Session["authority"] = resUser.Permissions;
+                    this.Session["Authority"] = resUser.Permissions;
                 }
                 Session.Timeout = 30;
                 return RedirectToAction("../Home/ManagerIndex");
@@ -40,6 +40,14 @@ namespace Logistics.Controllers
             {
                 return Content("<script >alert('账号或密码有误！');history.go(-1)</script >", "text/html");
             }
+        }
+
+        public ActionResult Logout()
+        {
+            Session["Account"] = null;
+            Session["UserName"] = null;
+            Session["Authority"] = null;
+            return RedirectToAction("../Home/Login");
         }
 
         // GET: Users/Details/5

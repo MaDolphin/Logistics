@@ -31,7 +31,8 @@ namespace Logistics.Controllers
         public ActionResult CreateBooking(CommunicateModel model)
         {
             model.BookingModel.BookStartTime = System.DateTime.Now;
-            model.BookingModel.CourierNo = 1;
+
+            model.BookingModel.CourierNo = 2;
             model.BookingModel.Status = 0;
             db.Booking.Add(model.BookingModel);
             db.SaveChanges();
