@@ -39,65 +39,65 @@ namespace Logistics.Controllers
                 int packno = (int)sto.PackNo;
                 var check = db.Stock.Find(packno);
                 var deli = from b in db.Delivery where b.PackNo == sto.PackNo && b.DeliveryStatus == 0 select b;
-                if (deli == null)
-                    return Content("<script >alert('货物尚未发货，不能确认收货！');history.go(-1)</script >", "text/html");
-                else if (deli.First().DeliveryStorage != account)
-                    return Content("<script >alert('货物不属于本仓库，不能确认收货！');history.go(-1)</script >", "text/html");
                 if (check != null)
                 {
                     if (check.StockStatus == 1 && check.Storage == account)
                         return Content("<script >alert('货物已在库，不能重复输入！');history.go(-1)</script >", "text/html");
                 }
+                if (deli.ToList().Count==0)
+                    return Content("<script >alert('货物尚未发货，不能确认收货！');history.go(-1)</script >", "text/html");
+                //else if(deli!=null)
+                //    if (deli.First().DeliveryStorage != account)
+                //        return Content("<script >alert('货物不属于本仓库，不能确认收货！');history.go(-1)</script >", "text/html");
+               
 
-                //确认发货单
-                Delivery delivery = deli.First();
-                delivery.DeliveryStatus = 1;
-                db.SaveChanges();
-
-                DateTime date = System.DateTime.Now;
-                //创建仓储信息单
-                sto.Storage1 = (int)Session["Account"];
-                sto.StorageTime = date;
-                sto.StorageType = 0;
-                db.Storage.Add(sto);
-                db.SaveChanges();
-
-                //更改库存信息
-                Stock stock = db.Stock.Find(sto.PackNo);
-                if (stock != null)
-                {
-                    stock.StockStatus = 1;
-                    db.SaveChanges();
-                }
-                else
-                {
-                    Stock stock1 = new Stock();
-                    stock1.PackNo = packno;
-                    stock1.Storage = (int)Session["Account"];
-                    stock1.StockTime = date;
-                    stock1.StockStatus = 1;
-                    db.Stock.Add(stock1);
+                    //确认发货单
+                    Delivery delivery = deli.First();
+                    delivery.DeliveryStatus = 1;
                     db.SaveChanges();
 
-                }
-
-                //更改流程单信息
-                Process pro = db.Process.Find(packno);
-                if (pro != null && pro.Status == 0)
-                {
-                    Storage storage = (Storage)from b in db.Storage
-                                               where b.PackNo == sto.PackNo && b.StorageTime == date
-                                               select b;
-                    pro.StorageNo = storage.StorageNo;
-                    pro.Storage = (String)Session["UserName"];
-                    pro.StorageTime = date;
-                    pro.Location = (String)Session["UserName"];
-                    pro.UpdateTime = date;
+                    DateTime date = System.DateTime.Now;
+                    //创建仓储信息单
+                    sto.Storage1 = (int)Session["Account"];
+                    sto.StorageTime = date;
+                    sto.StorageType = 0;
+                    db.Storage.Add(sto);
                     db.SaveChanges();
-                }
 
-                return RedirectToAction("StockInfo");
-            }
+                    //更改库存信息
+                    Stock stock = db.Stock.Find(sto.PackNo);
+                    if (stock != null)
+                    {
+                        stock.StockStatus = 1;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        Stock stock1 = new Stock();
+                        stock1.PackNo = packno;
+                        stock1.Storage = (int)Session["Account"];
+                        stock1.StockTime = date;
+                        stock1.StockStatus = 1;
+                        db.Stock.Add(stock1);
+                        db.SaveChanges();
+
+                    }
+
+                    //更改流程单信息
+                    Process pro = db.Process.Find(packno);
+                    if (pro != null && pro.Status == 0)
+                    {
+                        pro.StorageNo = sto.StorageNo;
+                        pro.Storage = (String)Session["UserName"];
+                        pro.StorageTime = date;
+                        pro.Location = (String)Session["UserName"];
+                        pro.UpdateTime = date;
+                        db.SaveChanges();
+                    }
+
+                    return RedirectToAction("StockInfo");
+                }
+         
             return View(sto);
         }
 
@@ -149,10 +149,7 @@ namespace Logistics.Controllers
             Process pro = db.Process.Find(sto.PackNo);
             if (pro != null && pro.Status == 0)
             {
-                Storage storage = (Storage)from b in db.Storage
-                                           where b.PackNo == sto.PackNo && b.StorageTime == date
-                                           select b;
-                pro.OutboundNo = storage.StorageNo;
+                pro.OutboundNo = sto.StorageNo;
                 pro.OutboundStorage = (String)Session["UserName"];
                 pro.OutboundTime = date;
                 pro.Location = (String)Session["UserName"];

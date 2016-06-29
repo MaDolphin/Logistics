@@ -46,7 +46,7 @@ namespace Logistics.Controllers
         {
             int account=(int)Session["Account"];
             String city="上海";
-            if (account == 2)
+            if (account == 7)
                 city = "北京";
             DateTime date=System.DateTime.Now;
             LogDetail log = db.LogDetail.Find(delivery.PackNo);

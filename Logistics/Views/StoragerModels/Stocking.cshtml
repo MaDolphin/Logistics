@@ -1,4 +1,4 @@
-﻿@model Logistics.Models.Storage
+﻿@model Logistics.Models.Complaint
 <!DOCTYPE html>
 <html>
 <!-- BEGIN HEAD -->
@@ -24,9 +24,6 @@
     <link href="../media/css/fullcalendar.css" rel="stylesheet" type="text/css" />
     <link href="../media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-
-
-    <link href="../media/css/PackNoform.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL STYLES -->
     <link rel="shortcut icon" href="../media/image/favicon.ico" />
 </head>
@@ -75,18 +72,36 @@
                 </div>
                 <!-- END PAGE HEADER-->
                 <!-- BEGIN PAGE CONTENT-->
-                <div style="padding: 1%;background: white">
-                    @using (Html.BeginForm("Stocking", "StoragerModels", FormMethod.Post, new { @class = "form-wrapper cf" }))
-                    {
-                        @Html.AntiForgeryToken()
-                            @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" ,@placeholder="请输入快递单号"} })
-                            @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
-                        
-                        <button type="submit">确认收货</button>
-                    }
-                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @using (Html.BeginForm("Stocking", "StoragerModels", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row-fluid">
+                                    <div class="form-horizontal">
+                                        <div class="control-group">
+                                            <label class="control-label">快递单号</label>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
-                
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">提交</button>
+                                        <button type="button" class="btn">取消</button>
+                                    </div>
+                                </div>
+                            }
+                            <!-- END FORM-->
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
+                </div>
             </div>
         </div>
         <!-- END PAGE -->
@@ -136,20 +151,20 @@
     <script src="../media/js/index.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
-		jQuery(document).ready(function() {
-		   App.init(); // initlayout and core plugins
-		   Index.init();
-		   Index.initJQVMAP(); // init index page's custom scripts
-		   Index.initCalendar(); // init index page's custom scripts
-		   Index.initCharts(); // init index page's custom scripts
-		   Index.initChat();
-		   Index.initMiniCharts();
-		   Index.initDashboardDaterange();
-		   //Index.initIntro();
-		});
+        jQuery(document).ready(function () {
+            App.init(); // initlayout and core plugins
+            Index.init();
+            Index.initJQVMAP(); // init index page's custom scripts
+            Index.initCalendar(); // init index page's custom scripts
+            Index.initCharts(); // init index page's custom scripts
+            Index.initChat();
+            Index.initMiniCharts();
+            Index.initDashboardDaterange();
+            //Index.initIntro();
+        });
     </script>
     <!-- END JAVASCRIPTS -->
-    <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
+    <script type="text/javascript">  var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-37564768-1']); _gaq.push(['_setDomainName', 'keenthemes.com']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_trackPageview']); (function () { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script>
 </body>
 <!-- END BODY -->
 </html>
