@@ -7,13 +7,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-    <link href="../Content/style.css" rel="stylesheet" type="text/css" />
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../media/css/PackNoform.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/media/css/mytimeline.css" type="text/css" />
+
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="../media/css/mytimeline.css" type="text/css" />
 </head>
 <body style="margin:0px 20px 0px 20px ">
     <nav class="navbar navbar-inverse" role="navigation">
@@ -31,92 +29,92 @@
     <div style="margin:0px 150px 0px 150px">
         <section id="cd-timeline" class="cd-container">
 
-            <div class="cd-timeline-block">
-                <div class="cd-timeline-img cd-movie">
-                    <img src="../Image/cd-icon-location.svg" alt="Location">
-                </div>
-                @if (Model.DeliveryNo != null)
-                {
+            @if (Model.DeliveryNo != null)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
+
                     <div class="cd-timeline-content">
                         <h2>发货</h2>
                         <p>已从 @Model.Network 发货</p>
                         <span class="cd-date">@Model.DeliveryTime</span>
                     </div>
-                }
-            </div>
-
-            <div class="cd-timeline-block">
-                <div class="cd-timeline-img cd-movie">
-                    <img src="../Image/cd-icon-location.svg" alt="Location">
                 </div>
-                @if (Model.StorageNo != null)
-                {
+            }
+            @if (Model.StorageNo != null)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
                     <div class="cd-timeline-content">
                         <h2>入库</h2>
                         <p>已存入 @Model.Storage</p>
                         <span class="cd-date">>@Model.StorageTime</span>
                     </div>
-                }
-            </div>
-
-            <div class="cd-timeline-block">
-                <div class="cd-timeline-img cd-movie">
-                    <img src="../Image/cd-icon-location.svg" alt="Location">
                 </div>
-                @if (Model.OutboundNo != null)
-                {
+            }
+
+            @if (Model.OutboundNo != null)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
                     <div class="cd-timeline-content">
                         <h2>出库</h2>
                         <p>已从 @Model.OutboundStorage 派送到您附近网点</p>
                         <span class="cd-date">@Model.OutboundTime</span>
                     </div>
-                }
-            </div>
-
-            <div class="cd-timeline-block">
-                <div class="cd-timeline-img cd-movie">
-                    <img src="../Image/cd-icon-location.svg" alt="Location">
                 </div>
-                @if (Model.DispatchNo != null)
-                {
+            }
+
+            @if (Model.DispatchNo != null)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
                     <div class="cd-timeline-content">
                         <h2>派件</h2>
                         <p>@Model.CourierNo 正在拼命送到您手中</p>
                         <span class="cd-date">@Model.DispatchTime</span>
                     </div>
-                }
-            </div>
-
-            <div class="cd-timeline-block">
-                <div class="cd-timeline-img cd-movie">
-                    <img src="../Image/cd-icon-location.svg" alt="Location">
                 </div>
-                @if (Model.Status == 1)
-                {
+            }
+
+            @if (Model.Status == 1)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
+
                     <div class="cd-timeline-content">
                         <h2>退件</h2>
                         <p>正在退件中</p>
                         <span class="cd-date">@Model.UpdateTime</span>
                     </div>
-                }
-            </div>
 
-            <div class="cd-timeline-block">
-                <div class="cd-timeline-img cd-movie">
-                    <img src="../Image/cd-icon-location.svg" alt="Location">
                 </div>
-                @if (Model.Status == 2)
-                {
+            }
+
+            @if (Model.Status == 2)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
                     <div class="cd-timeline-content">
                         <h2>送达</h2>
                         <p>您的快递已经签收</p>
                         <span class="cd-date">@Model.UpdateTime</span>
                     </div>
-                }
-
-            </div>
+                </div>
+            }
         </section>
-
     </div>
 </body>
 </html>
