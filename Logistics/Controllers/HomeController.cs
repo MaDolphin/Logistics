@@ -9,18 +9,24 @@ namespace Logistics.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
 
+        [Filter.Filter.LoginFilter]
         public ActionResult ManagerIndex()
         {
             return View();
         }
 
         public ActionResult Login()
+        {
+            return View();
+        }
+
+        [Filter.Filter.LoginFilter]
+        public ActionResult Error()
         {
             return View();
         }

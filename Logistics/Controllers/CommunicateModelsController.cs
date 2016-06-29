@@ -10,6 +10,8 @@ using Logistics.Models;
 
 namespace Logistics.Controllers
 {
+    [Filter.Filter.LoginFilter]
+    [Filter.Filter.CommunicateFilter]
     public class CommunicateModelsController : Controller
     {
         private ModelContext db = new ModelContext();

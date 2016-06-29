@@ -10,6 +10,8 @@ using Logistics.Models;
 
 namespace Logistics.Controllers
 {
+    [Filter.Filter.LoginFilter]
+    [Filter.Filter.CourierFilter]
     public class CourierModelsController : Controller
     {
         private ModelContext db = new ModelContext();
@@ -57,7 +59,6 @@ namespace Logistics.Controllers
             db.SaveChanges();
             int packno = model.LogDetailModel.PackNo;
             return Content("<script>alert('快递单号为：" + packno + "  请牢记！');location.href='../CourierModels/AddPackageInfo';</script>");
-            //return Content("<script >alert(快递单号为："+ packno + "，请牢记！);history.go(-1)</script >", "text/html");
         }
 
         public ActionResult SendPackage()
@@ -76,7 +77,7 @@ namespace Logistics.Controllers
             dispatch.DispatchStatus = 1;
             db.Entry(dispatch).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("SendPackage");
+            return RedirectToAction("../CourierModels/SendPackage");
         }
 
         public ActionResult FinishSendPackageMethod(int? id)
@@ -93,7 +94,7 @@ namespace Logistics.Controllers
             db.Entry(process).State = EntityState.Modified;
             db.SaveChanges();
 
-            return RedirectToAction("SendPackage");
+            return RedirectToAction("../CourierModels/SendPackage");
         }
 
         public ActionResult BackSendPackageMethod(int? id)
@@ -116,7 +117,7 @@ namespace Logistics.Controllers
             db.Entry(process).State = EntityState.Modified;
             db.SaveChanges();
 
-            return RedirectToAction("SendPackage");
+            return RedirectToAction("../CourierModels/SendPackage");
         }
     }
 }
