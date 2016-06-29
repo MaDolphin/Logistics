@@ -38,9 +38,26 @@ namespace Logistics.Controllers
             return RedirectToAction("GetPackage");
         }
 
+        [HttpGet]
         public ActionResult AddPackageInfo()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddPackageInfo(CourierModel model)
+        {
+            String fromer = model.LogDetailModel.FromName;
+            DateTime datetime = System.DateTime.Now;
+            model.LogDetailModel.CreateTime = datetime;
+            model.LogDetailModel.Status = 0;
+            db.LogDetail.Add(model.LogDetailModel);
+            db.SaveChanges();
+            int packno = model.LogDetailModel.PackNo;
+            return Content("<script>alert('快递单号为：" + packno + "  请牢记！');location.href='../CourierModels/AddPackageInfo';</script>");
+            //return Content("<script >alert(快递单号为："+ packno + "，请牢记！);history.go(-1)</script >", "text/html");
+
         }
     }
 }

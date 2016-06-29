@@ -120,6 +120,10 @@ namespace Logistics.Models
                 .Property(e => e.Location)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Storage>()
+                .Property(e => e.StorageNetwork)
+                .IsUnicode(false);
+
             modelBuilder.Entity<User>()
                 .Property(e => e.UserName)
                 .IsUnicode(false);

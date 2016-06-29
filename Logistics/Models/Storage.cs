@@ -20,5 +20,8 @@ namespace Logistics.Models
         public DateTime? StorageTime { get; set; }
 
         public int? StorageType { get; set; }
+
+        [StringLength(10)]
+        public string StorageNetwork { get; set; }
     }
 }
