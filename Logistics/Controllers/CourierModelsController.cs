@@ -90,9 +90,19 @@ namespace Logistics.Controllers
 
             //流程信息单修改
             Process process = db.Process.Find(dispatch.PackNo);
-            process.Status = 2;
-            db.Entry(process).State = EntityState.Modified;
-            db.SaveChanges();
+            if(process.Status == 0)
+            {
+                process.Status = 2;
+                db.Entry(process).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            if (process.Status == 1)
+            {
+                process.Status = 3;
+                db.Entry(process).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
 
             return RedirectToAction("../CourierModels/SendPackage");
         }
