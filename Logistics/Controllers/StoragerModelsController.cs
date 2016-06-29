@@ -129,9 +129,18 @@ namespace Logistics.Controllers
             LogDetail log = db.LogDetail.Find(id);
             if (log != null)
             {
-                if (log.ToCity.Equals("上海"))
-                    sto.StorageNetwork = 6;
-                else sto.StorageNetwork = 7;
+                if (log.Status == 0)
+                {
+                    if (log.ToCity.Equals("上海"))
+                        sto.StorageNetwork = 6;
+                    else sto.StorageNetwork = 7;
+                }
+                if (log.Status == 1)
+                {
+                    if (log.FromCity.Equals("上海"))
+                        sto.StorageNetwork = 7;
+                    else sto.StorageNetwork = 6;
+                }
             }
             sto.PackNo = id;
             sto.Storage1 = (int)Session["Account"];
