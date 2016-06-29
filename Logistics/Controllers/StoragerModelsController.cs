@@ -103,6 +103,8 @@ namespace Logistics.Controllers
 
 
 
+
+
         //查询库存、出库
         // GET: Storage/StockInfo
         public ActionResult StockInfo()
