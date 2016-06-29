@@ -19,5 +19,24 @@ namespace Logistics.Controllers
         {
             return View();
         }
+
+        //发货
+        // GET: Network/Delivering
+        public ActionResult Delivering()
+        {
+            return View();
+        }
+
+        // POST: Network/Delivering
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delivering([Bind(Include = "PackNo,DeliveryClass")] Delivery delivery)
+        {
+            delivery.Network = (int)Session["Account"];
+            delivery.DeliveryTime = System.DateTime.Now;
+            db.Delivery.Add(delivery);
+            db.SaveChanges();
+            return RedirectToAction("Delivering");
+        }
     }
 }
