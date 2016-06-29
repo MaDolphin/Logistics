@@ -41,15 +41,17 @@ namespace Logistics.Controllers
                 int packno = (int)sto.PackNo;
                 var check = db.Stock.Find(packno);
                 var deli = from b in db.Delivery where b.PackNo == sto.PackNo && b.DeliveryStatus == 0 select b;
-                if (deli == null)
-                    return Content("<script >alert('货物尚未发货，不能确认收货！');history.go(-1)</script >", "text/html");
-                else if (deli.First().DeliveryStorage != account)
-                    return Content("<script >alert('货物不属于本仓库，不能确认收货！');history.go(-1)</script >", "text/html");
                 if (check != null)
                 {
                     if (check.StockStatus == 1 && check.Storage == account)
                         return Content("<script >alert('货物已在库，不能重复输入！');history.go(-1)</script >", "text/html");
                 }
+                if (deli.ToList().Count==0)
+                    return Content("<script >alert('货物尚未发货，不能确认收货！');history.go(-1)</script >", "text/html");
+                //else if(deli!=null)
+                //    if (deli.First().DeliveryStorage != account)
+                //        return Content("<script >alert('货物不属于本仓库，不能确认收货！');history.go(-1)</script >", "text/html");
+
 
                 //确认发货单
                 Delivery delivery = deli.First();
@@ -87,10 +89,7 @@ namespace Logistics.Controllers
                 Process pro = db.Process.Find(packno);
                 if (pro != null && pro.Status == 0)
                 {
-                    Storage storage = (Storage)from b in db.Storage
-                                               where b.PackNo == sto.PackNo && b.StorageTime == date
-                                               select b;
-                    pro.StorageNo = storage.StorageNo;
+                        pro.StorageNo = sto.StorageNo;
                     pro.Storage = (String)Session["UserName"];
                     pro.StorageTime = date;
                     pro.Location = (String)Session["UserName"];
@@ -100,6 +99,7 @@ namespace Logistics.Controllers
 
                 return RedirectToAction("StockInfo");
             }
+         
             return View(sto);
         }
 
@@ -151,10 +151,7 @@ namespace Logistics.Controllers
             Process pro = db.Process.Find(sto.PackNo);
             if (pro != null && pro.Status == 0)
             {
-                Storage storage = (Storage)from b in db.Storage
-                                           where b.PackNo == sto.PackNo && b.StorageTime == date
-                                           select b;
-                pro.OutboundNo = storage.StorageNo;
+                pro.OutboundNo = sto.StorageNo;
                 pro.OutboundStorage = (String)Session["UserName"];
                 pro.OutboundTime = date;
                 pro.Location = (String)Session["UserName"];
