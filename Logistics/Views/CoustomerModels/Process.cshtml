@@ -8,25 +8,35 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/media/css/PackNoform.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="~/media/css/mytimeline.css" type="text/css" />
 
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
-<body style="margin:0px 20px 0px 20px ">
+<body style="margin:0px 20px 0px 20px;background: white ">
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">快递100</a>
+            <a class="navbar-brand" href="~/Home/Index">快递100</a>
         </div>
         <div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../CoustomerModels/Complaint">投诉</a></li>
-                <li class="active"><a href="../Home/Login">登录</a></li>
+                <li><a href="~/CoustomerModels/Complaint">投诉</a></li>
+                <li class="active"><a href="~/Home/Login">登录</a></li>
                 <li style="width:40px;"></li>
             </ul>
         </div>
     </nav>
     <div style="margin:0px 150px 0px 150px">
+
+        <div style="margin:40px 0 100px 0;background: white">
+            <div class="form-wrapper cf">
+                @using (Html.BeginForm("Process", "CoustomerModels", FormMethod.Post))
+            {
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @id = "tags", @placeholder = "快递单号..." } })
+                    <button type="submit">查找快递</button>
+                }
+            </div>
+        </div>
         <section id="cd-timeline" class="cd-container">
 
             @if (Model.DeliveryNo != null)
@@ -36,10 +46,10 @@
                         <img src="~/Image/cd-icon-location.svg" alt="Location">
                     </div>
 
-                    <div class="cd-timeline-content">
-                        <h2>发货</h2>
-                        <p>已从 @Model.Network 发货</p>
-                        <span class="cd-date">@Model.DeliveryTime</span>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">发货</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">已从 @Model.Network 发货</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.DeliveryTime</span>
                     </div>
                 </div>
             }
@@ -49,10 +59,10 @@
                     <div class="cd-timeline-img cd-movie">
                         <img src="~/Image/cd-icon-location.svg" alt="Location">
                     </div>
-                    <div class="cd-timeline-content">
-                        <h2>入库</h2>
-                        <p>已存入 @Model.Storage</p>
-                        <span class="cd-date">>@Model.StorageTime</span>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">入库</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">已存入 @Model.Storage</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.StorageTime</span>
                     </div>
                 </div>
             }
@@ -63,10 +73,10 @@
                     <div class="cd-timeline-img cd-movie">
                         <img src="~/Image/cd-icon-location.svg" alt="Location">
                     </div>
-                    <div class="cd-timeline-content">
-                        <h2>出库</h2>
-                        <p>已从 @Model.OutboundStorage 派送到您附近网点</p>
-                        <span class="cd-date">@Model.OutboundTime</span>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">出库</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">已从 @Model.OutboundStorage 派送到您附近网点</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.OutboundTime</span>
                     </div>
                 </div>
             }
@@ -77,10 +87,10 @@
                     <div class="cd-timeline-img cd-movie">
                         <img src="~/Image/cd-icon-location.svg" alt="Location">
                     </div>
-                    <div class="cd-timeline-content">
-                        <h2>派件</h2>
-                        <p>@Model.CourierNo 正在拼命送到您手中</p>
-                        <span class="cd-date">@Model.DispatchTime</span>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">派件</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">@Model.CourierNo 正在拼命送到您手中</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.DispatchTime</span>
                     </div>
                 </div>
             }
@@ -92,10 +102,10 @@
                         <img src="~/Image/cd-icon-location.svg" alt="Location">
                     </div>
 
-                    <div class="cd-timeline-content">
-                        <h2>退件</h2>
-                        <p>正在退件中</p>
-                        <span class="cd-date">@Model.UpdateTime</span>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">退件</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">正在退件中</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.UpdateTime</span>
                     </div>
 
                 </div>
@@ -107,10 +117,10 @@
                     <div class="cd-timeline-img cd-movie">
                         <img src="~/Image/cd-icon-location.svg" alt="Location">
                     </div>
-                    <div class="cd-timeline-content">
-                        <h2>送达</h2>
-                        <p>您的快递已经签收</p>
-                        <span class="cd-date">@Model.UpdateTime</span>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">送达</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">您的快递已经签收</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.UpdateTime</span>
                     </div>
                 </div>
             }
