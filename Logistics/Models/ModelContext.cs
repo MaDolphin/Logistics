@@ -52,6 +52,10 @@ namespace Logistics.Models
                 .Property(e => e.ToName)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Dispatch>()
+                .Property(e => e.ToAddresss)
+                .IsUnicode(false);
+
             modelBuilder.Entity<LogDetail>()
                 .Property(e => e.FromProvince)
                 .IsUnicode(false);

@@ -40,6 +40,8 @@ namespace Logistics.Models
 
         public LogDetail LogDetailModel { get; set; }
 
+        public IEnumerable<Dispatch> DispatchtModel { get; set; }
+
         public IEnumerable<Process> ProcessModel { get; set; }
 
         public IEnumerable<User> UserModel { get; set; }
@@ -53,6 +55,8 @@ namespace Logistics.Models
         public IEnumerable<Delivery> DeliveryModel { get; set; }
 
         public IEnumerable<LogDetail> LogDetailModel { get; set; }
+
+        public IEnumerable<Storage> StorageModel { get; set; }
 
         public IEnumerable<Process> ProcessModel { get; set; }
 

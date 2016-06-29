@@ -25,5 +25,10 @@ namespace Logistics.Models
         public DateTime? DispatchTime { get; set; }
 
         public int? DispatchStatus { get; set; }
+
+        public int? ToTel { get; set; }
+
+        [StringLength(50)]
+        public string ToAddresss { get; set; }
     }
 }
