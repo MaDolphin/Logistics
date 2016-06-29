@@ -17,7 +17,7 @@
 Account6 网点1 上海
 	Account2 快递员1
 	Account3 快递员2
-Account7 网点2 背景
+Account7 网点2 北京
 	Account4 快递员3
 	Account5 快递员4
 Account8 仓库
