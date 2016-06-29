@@ -20,6 +20,20 @@ namespace Logistics.Controllers
             return View();
         }
 
+
+
+        //查询收货信息
+        // GET: Network/LogisticInfo
+        public ActionResult LogisticInfo()
+        {
+            
+            return View();
+        }
+
+     
+
+
+
         //发货
         // GET: Network/Delivering
         public ActionResult Delivering()
@@ -32,10 +46,30 @@ namespace Logistics.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delivering([Bind(Include = "PackNo,DeliveryClass")] Delivery delivery)
         {
-            delivery.Network = (int)Session["Account"];
+            int account=(int)Session["Account"];
+            DateTime date=System.DateTime.Now;
+            //创建发货单
+            delivery.Network = account;
             delivery.DeliveryTime = System.DateTime.Now;
+            delivery.DeliveryStorage = 8;
+            delivery.DeliveryStatus = 0;
             db.Delivery.Add(delivery);
             db.SaveChanges();
+
+
+            //创建流程单
+            Process pro = new Process();
+            pro.PackNo = (int)delivery.PackNo;
+            pro.DeliveryNo=delivery.DeliveryNo;
+            pro.DeliveryTime = date;
+            pro.Network = (String)Session["UserName"];
+            pro.UpdateTime = date;
+            pro.Location = (String)Session["UserName"];
+            pro.Status = 0;
+            db.Process.Add(pro);
+            db.SaveChanges();
+
+
             return RedirectToAction("Delivering");
         }
 
