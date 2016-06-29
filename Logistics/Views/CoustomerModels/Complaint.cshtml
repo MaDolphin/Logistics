@@ -1,6 +1,6 @@
 ﻿@model Logistics.Models.Complaint
     @{
-    ViewBag.Title = "投诉";
+    ViewBag.Title = "投诉建议";
     }
     <!DOCTYPE html>
     <html>
@@ -27,11 +27,11 @@
     <body style="margin:0px 20px 0px 20px ">
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">快递100</a>
+                <a class="navbar-brand" href="~/Home/Index">快递100</a>
             </div>
             <div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../CoustomerModels/Complaint">投诉</a></li>
+                    <li><a href="../CoustomerModels/Complaint">投诉建议</a></li>
                     <li class="active"><a href="../Home/Login">登录</a></li>
                     <li style="width:40px;"></li>
                 </ul>
@@ -43,7 +43,7 @@
                 <div class="span12">
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                     <h3 class="page-title">
-                        投诉
+                        投诉建议
                     </h3>
                     <ul class="breadcrumb">
                         <li>
@@ -52,7 +52,7 @@
                             <i class="icon-angle-right"></i>
                         </li>
                         <li>
-                            <a href="#">投诉</a>
+                            <a href="#">投诉建议</a>
                         </li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
@@ -64,28 +64,28 @@
                 <div class="row-fluid">
                     <div class="form-horizontal">
                         <div class="control-group">
-                            <label class="control-label">投诉快递单号</label>
+                            <label class="control-label">快递单号</label>
                             <div class="controls">
                                 @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span4 m-wrap" } })
                                 @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">投诉人姓名</label>
+                            <label class="control-label">姓名</label>
                             <div class="controls">
                                 @Html.EditorFor(model => model.ComplaintName, new { htmlAttributes = new { @class = "span4 m-wrap" } })
                                 @Html.ValidationMessageFor(model => model.ComplaintName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">投诉人电话</label>
+                            <label class="control-label">联系电话</label>
                             <div class="controls">
                                 @Html.EditorFor(model => model.ComplaintTel, new { htmlAttributes = new { @class = "span4 m-wrap" } })
                                 @Html.ValidationMessageFor(model => model.ComplaintTel, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">投诉内容</label>
+                            <label class="control-label">内容</label>
                             <div class="controls">
                                 @Html.TextAreaFor(model => model.ComplaintContent, 6, 50, null)
                                 @Html.ValidationMessageFor(model => model.ComplaintContent, "", new { @class = "text-danger" })
