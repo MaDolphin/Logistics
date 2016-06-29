@@ -30,5 +30,7 @@ namespace Logistics.Models
 
         [StringLength(50)]
         public string ToAddresss { get; set; }
+
+        public int? DispatchType { get; set; }
     }
 }
