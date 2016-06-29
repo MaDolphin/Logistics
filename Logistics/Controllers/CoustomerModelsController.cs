@@ -44,14 +44,22 @@ namespace Logistics.Controllers
 
 
         // GET: Coustomer/Process
-        public ActionResult Process([Bind(Include = "PackNo")] Process process)
+        public ActionResult Process(int? id)
         {
-            Process pro = db.Process.Find(process.PackNo);
+            Process pro = db.Process.Find(id);
             if (pro == null)
             {
                 return Content("<script >alert('单号不存在！');history.go(-1)</script >", "text/html");
             }
             return View(pro);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Process([Bind(Include = "PackNo")] Process process)
+        {
+            return RedirectToAction("Process", "CoustomerModels", new { id = process.PackNo });
         }
 
        
