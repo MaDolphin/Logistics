@@ -86,6 +86,7 @@
                 </div>
                 <!-- END PAGE HEADER-->
                 <!-- BEGIN PAGE CONTENT-->
+                
                 <div class="row-fluid">
                     <div class="span12">
                         <!-- BEGIN SAMPLE FORM PORTLET-->
@@ -94,6 +95,7 @@
                             @using (Html.BeginForm("AddPackageInfo", "CourierModels", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
+
                                 <div class="row-fluid">
                                     <div class="form-horizontal">
                                         <div class="span6">
@@ -132,7 +134,7 @@
                                                     <div class="control-group">
                                                         <label class="control-label">始发地城市</label>
                                                         <div class="controls">
-                                                            @Html.EditorFor(model => model.LogDetailModel.FromCity, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.DropDownListFor(model => model.LogDetailModel.FromCity, new SelectList(new[] { "上海", "北京" }), new { @class = "span12 m-wrap" })
                                                             @Html.ValidationMessageFor(model => model.LogDetailModel.FromCity, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -190,7 +192,7 @@
                                                     <div class="control-group">
                                                         <label class="control-label">目的地城市</label>
                                                         <div class="controls">
-                                                            @Html.EditorFor(model => model.LogDetailModel.ToCity, new { htmlAttributes = new { @class = "span12 m-wrap" } })
+                                                            @Html.DropDownListFor(model => model.LogDetailModel.ToCity, new SelectList(new[] { "上海", "北京" }), new { @class = "span12 m-wrap" })
                                                             @Html.ValidationMessageFor(model => model.LogDetailModel.ToCity, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>

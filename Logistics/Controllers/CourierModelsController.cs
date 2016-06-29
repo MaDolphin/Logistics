@@ -52,12 +52,12 @@ namespace Logistics.Controllers
             DateTime datetime = System.DateTime.Now;
             model.LogDetailModel.CreateTime = datetime;
             model.LogDetailModel.Status = 0;
+            model.LogDetailModel.getter = (int)Session["Account"];
             db.LogDetail.Add(model.LogDetailModel);
             db.SaveChanges();
             int packno = model.LogDetailModel.PackNo;
             return Content("<script>alert('快递单号为：" + packno + "  请牢记！');location.href='../CourierModels/AddPackageInfo';</script>");
             //return Content("<script >alert(快递单号为："+ packno + "，请牢记！);history.go(-1)</script >", "text/html");
-
         }
     }
 }
