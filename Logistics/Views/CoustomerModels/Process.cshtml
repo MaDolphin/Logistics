@@ -126,7 +126,7 @@
                         {
                             <li class="timeline-grey">
                                 <div class="timeline-time">
-                                    <span class="time"></span>
+                                    <span class="time">@Model.UpdateTime</span>
                                 </div>
                                 <div class="timeline-icon"><i class="icon-time"></i></div>
                                 <div class="timeline-body">
@@ -135,6 +135,25 @@
 
                                     @*<div class="timeline-content"></div>
                                         <div class="timeline-footer"></div>*@
+
+                                </div>
+                            </li>
+                        }
+                        
+
+                        @if (Model.Status == 2)
+                        {
+                            <li class="timeline-grey">
+                                <div class="timeline-time">
+                                    <span class="time">@Model.UpdateTime</span>
+                                </div>
+                                <div class="timeline-icon"><i class="icon-time"></i></div>
+                                <div class="timeline-body">
+
+                                    已签收
+
+                                    @*<div class="timeline-content"></div>
+                    <div class="timeline-footer"></div>*@
 
                                 </div>
                             </li>
