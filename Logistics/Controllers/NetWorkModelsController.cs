@@ -135,6 +135,7 @@ namespace Logistics.Controllers
             dispatch.CourierNo = RandKey;
             dispatch.DispatchTime = System.DateTime.Now;
             dispatch.DispatchStatus = 0;
+            dispatch.DispatchType = logDetail.Status;
             db.Dispatch.Add(dispatch);
             db.SaveChanges();
             int dispatchNo = dispatch.DispatchNo;
@@ -149,8 +150,7 @@ namespace Logistics.Controllers
             db.Entry(process).State = EntityState.Modified;
             db.SaveChanges();
 
-            return Content("<script>alert('操作成功！');location.href='../NetWorkModels/SendManager';</script>");
-            //return RedirectToAction("../NetWorkModels/SendManager");
+            return RedirectToAction("../NetWorkModels/SendManager");
         }
     }
 }
