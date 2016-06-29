@@ -608,6 +608,8 @@
     <Content Include="Views\CourierModels\GetPackage.cshtml" />
     <Content Include="Views\CourierModels\AddPackageInfo.cshtml" />
     <Content Include="Views\NetWorkModels\Delivering.cshtml" />
+    <Content Include="Views\NetWorkModels\SendManager.cshtml" />
+    <Content Include="Views\CourierModels\SendPackage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
