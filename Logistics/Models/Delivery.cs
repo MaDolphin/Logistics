@@ -21,5 +21,7 @@ namespace Logistics.Models
         public int? DeliveryClass { get; set; }
 
         public int? DeliveryStatus { get; set; }
+
+        public int? DeliveryStorage { get; set; }
     }
 }
