@@ -607,10 +607,10 @@
     <Content Include="Views\CommunicateModels\CreateBooking.cshtml" />
     <Content Include="Views\CourierModels\GetPackage.cshtml" />
     <Content Include="Views\CourierModels\AddPackageInfo.cshtml" />
+    <Content Include="Views\NetWorkModels\Delivering.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NetWorkModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

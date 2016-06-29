@@ -1,10 +1,10 @@
-﻿@model Logistics.Models.Storage
+﻿@model Logistics.Models.Complaint
 <!DOCTYPE html>
 <html>
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>入库信息填写</title>
+    <title>发货登记</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -24,9 +24,6 @@
     <link href="../media/css/fullcalendar.css" rel="stylesheet" type="text/css" />
     <link href="../media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-
-
-    <link href="../media/css/PackNoform.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL STYLES -->
     <link rel="shortcut icon" href="../media/image/favicon.ico" />
 </head>
@@ -54,7 +51,7 @@
                     <div class="span12">
                         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                         <h3 class="page-title">
-                            入库信息填写
+                            发货登记
                         </h3>
                         <ul class="breadcrumb">
                             <li>
@@ -63,11 +60,11 @@
                                 <i class="icon-angle-right"></i>
                             </li>
                             <li>
-                                <a href="#">仓库管理</a>
+                                <a href="#">网点管理</a>
                                 <i class="icon-angle-right"></i>
                             </li>
                             <li>
-                                <a href="#">入库信息填写</a>
+                                <a href="#">发货登记</a>
                             </li>
                         </ul>
                         <!-- END PAGE TITLE & BREADCRUMB-->
@@ -75,18 +72,43 @@
                 </div>
                 <!-- END PAGE HEADER-->
                 <!-- BEGIN PAGE CONTENT-->
-                <div style="padding: 1%;background: white">
-                    @using (Html.BeginForm("Stocking", "StoragerModels", FormMethod.Post, new { @class = "form-wrapper cf" }))
-                    {
-                        @Html.AntiForgeryToken()
-                            @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" ,@placeholder="请输入快递单号"} })
-                            @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
-                        
-                        <button type="submit">确认收货</button>
-                    }
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @using (Html.BeginForm("Complaint", "CoustomerModels", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row-fluid">
+                                    <div class="form-horizontal">
+                                        <div class="control-group">
+                                            <label class="control-label">快递单号</label>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.PackNo, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.PackNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">发货班次</label>
+                                            <div class="controls">
+                                                @Html.DropDownListFor(model => model.ComplaintName, new { htmlAttributes = new { @class = "span3 m-wrap" } })
+                                                @Html.ValidationMessageFor(model => model.ComplaintName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">提交</button>
+                                        <button type="button" class="btn">取消</button>
+                                    </div>
+                                </div>
+                            }
+                            <!-- END FORM-->
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
                 </div>
-
-                
             </div>
         </div>
         <!-- END PAGE -->

@@ -35,13 +35,25 @@ namespace Logistics.Controllers
         {
             if (ModelState.IsValid)
             {
+                int account=(int)Session["Account"];
                 int packno = (int)sto.PackNo;
                 var check = db.Stock.Find(packno);
+                var deli = from b in db.Delivery where b.PackNo == sto.PackNo && b.DeliveryStatus == 0 select b;
+                if(deli==null)
+                    return Content("<script >alert('货物尚未发货，不能确认收货！');history.go(-1)</script >", "text/html");
+                else if (deli.First().DeliveryStorage != account)
+                    return Content("<script >alert('货物不属于本仓库，不能确认收货！');history.go(-1)</script >", "text/html");
                 if (check != null)
                 {
                     if (check.StockStatus == 1 && check.Storage == 1)
                         return Content("<script >alert('货物已在库，不能重复输入！');history.go(-1)</script >", "text/html");
                 }
+
+                //确认发货单
+                Delivery delivery = deli.First();
+                delivery.DeliveryStatus = 1;
+                db.SaveChanges();
+
                     DateTime date = System.DateTime.Now;
                     //创建仓储信息单
                     sto.Storage1 = (int)Session["Account"];
@@ -98,8 +110,9 @@ namespace Logistics.Controllers
         // GET: Storage/StockInfo
         public ActionResult StockInfo()
         {
+            int account = (int)Session["Account"];
             var stock = from b in db.Stock
-                          where b.StockStatus == 1 && b.Storage==1
+                          where b.StockStatus == 1 && b.Storage==account
                           select b;
             return View(stock.ToList());
         }
@@ -112,10 +125,18 @@ namespace Logistics.Controllers
             DateTime date = System.DateTime.Now;
             //创建仓储信息单
             Storage sto = new Storage();
+            LogDetail log = db.LogDetail.Find(id);
+            if (log != null)
+            {
+                if (log.ToCity.Equals("上海"))
+                    sto.StorageNetwork = 6;
+                else sto.StorageNetwork = 7;
+            }
             sto.PackNo = id;
             sto.Storage1 = (int)Session["Account"];
             sto.StorageTime = date;
             sto.StorageType = 1;
+            
             db.Storage.Add(sto);
             db.SaveChanges();
 
