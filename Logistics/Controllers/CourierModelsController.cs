@@ -93,12 +93,14 @@ namespace Logistics.Controllers
             if(process.Status == 0)
             {
                 process.Status = 2;
+                process.UpdateTime = System.DateTime.Now;
                 db.Entry(process).State = EntityState.Modified;
                 db.SaveChanges();
             }
             if (process.Status == 1)
             {
                 process.Status = 3;
+                process.UpdateTime = System.DateTime.Now;
                 db.Entry(process).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -124,6 +126,7 @@ namespace Logistics.Controllers
             //流程信息单修改
             Process process = db.Process.Find(dispatch.PackNo);
             process.Status = 1;
+            process.UpdateTime = System.DateTime.Now;
             db.Entry(process).State = EntityState.Modified;
             db.SaveChanges();
 
