@@ -138,8 +138,8 @@ namespace Logistics.Controllers
                 if (log.Status == 1)
                 {
                     if (log.FromCity.Equals("上海"))
-                        sto.StorageNetwork = 7;
-                    else sto.StorageNetwork = 6;
+                        sto.StorageNetwork = 6;
+                    else sto.StorageNetwork = 7;
                 }
             }
             sto.PackNo = id;
