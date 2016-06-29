@@ -10,6 +10,8 @@ using Logistics.Models;
 
 namespace Logistics.Controllers
 {
+    [Filter.Filter.LoginFilter]
+    [Filter.Filter.NetWorkFilter]
     public class NetWorkModelsController : Controller
     {
         private ModelContext db = new ModelContext();
@@ -98,7 +100,7 @@ namespace Logistics.Controllers
         public ActionResult SendManagerMethod(int? id)
         {
             int RandKey = 0;
-            int account = (int)Session["Acccount"];
+            int account = (int)Session["Account"];
             User user = db.User.Find(account);
             if(account == 6)
             {
@@ -148,7 +150,7 @@ namespace Logistics.Controllers
             db.SaveChanges();
 
             return Content("<script>alert('操作成功！');location.href='../NetWorkModels/SendManager';</script>");
-            //return RedirectToAction("SendManager");
+            //return RedirectToAction("../NetWorkModels/SendManager");
         }
     }
 }

@@ -126,15 +126,8 @@
                                                 @if (item.DispatchStatus == 1)
                                                 {
                                                     @Html.ActionLink("派送完成", "FinishSendPackageMethod", "CourierModels", new { id = item.DispatchNo }, new { @class = "btn mini green" })
+                                                    <span style="width:20px;"></span>
                                                     @Html.ActionLink("退件", "BackSendPackageMethod", "CourierModels", new { id = item.DispatchNo }, new { @class = "btn mini red" })
-                                                }
-                                                @if (item.DispatchStatus == 2)
-                                                {
-                                                    <td><span class="label label-success">派送完成</span></td>
-                                                }
-                                                @if (item.DispatchStatus == 3)
-                                                {
-                                                    <td><span class="label label-danger">退件</span></td>
                                                 }
                                             </td>
                                         </tr>

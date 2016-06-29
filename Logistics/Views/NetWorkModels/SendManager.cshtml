@@ -105,7 +105,7 @@
                                                 <td><span class="label label-info">未配送</span></td>
                                             }
                                             <td class="hidden-480">
-                                                @if (item.StorageStatus == 1)
+                                                @if (item.StorageStatus == 0)
                                                 {
                                                     @Html.ActionLink("安排配送", "SendManagerMethod", "NetWorkModels", new { id = item.StorageNo }, new { @class = "btn mini red" })
                                                 }
