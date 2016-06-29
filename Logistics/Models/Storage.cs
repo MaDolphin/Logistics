@@ -22,5 +22,7 @@ namespace Logistics.Models
         public int? StorageType { get; set; }
 
         public int? StorageNetwork { get; set; }
+
+        public int? StorageStatus { get; set; }
     }
 }

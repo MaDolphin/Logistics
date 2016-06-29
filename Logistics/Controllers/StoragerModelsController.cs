@@ -45,7 +45,7 @@ namespace Logistics.Controllers
                     return Content("<script >alert('货物不属于本仓库，不能确认收货！');history.go(-1)</script >", "text/html");
                 if (check != null)
                 {
-                    if (check.StockStatus == 1 && check.Storage == 1)
+                    if (check.StockStatus == 1 && check.Storage == account)
                         return Content("<script >alert('货物已在库，不能重复输入！');history.go(-1)</script >", "text/html");
                 }
 
@@ -133,7 +133,7 @@ namespace Logistics.Controllers
             sto.Storage1 = (int)Session["Account"];
             sto.StorageTime = date;
             sto.StorageType = 1;
-
+            sto.StorageStatus = 0;
             db.Storage.Add(sto);
             db.SaveChanges();
 
