@@ -38,5 +38,14 @@ namespace Logistics.Controllers
             db.SaveChanges();
             return RedirectToAction("Delivering");
         }
+
+        public ActionResult SendManager()
+        {
+            int account = (int)Session["Account"];
+            var list = from a in db.Storage where a.StorageNetwork == account orderby a.Status, a.BookGetTime ascending select a;
+            CourierModel model = new CourierModel();
+            model.BookingModel = list.ToList();
+            return View();
+        }
     }
 }
