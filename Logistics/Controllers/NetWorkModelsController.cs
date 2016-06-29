@@ -54,8 +54,16 @@ namespace Logistics.Controllers
             LogDetail log = db.LogDetail.Find(delivery.PackNo);
             if(log==null)
                 return Content("<script >alert('货物尚未揽件，不能发货！');history.go(-1)</script >", "text/html");
-            else if(!log.FromCity.Equals(city))
+            else{
+                if(log.Status==0) {
+                    if(!log.FromCity.Equals(city))
+                        return Content("<script >alert('货物不在本城市，不能发货！');history.go(-1)</script >", "text/html");
+                }
+                if(log.Status==1){
+                    if(!log.ToCity.Equals(city))
                 return Content("<script >alert('货物不在本城市，不能发货！');history.go(-1)</script >", "text/html");
+                }
+            }
 
 
             //创建发货单
