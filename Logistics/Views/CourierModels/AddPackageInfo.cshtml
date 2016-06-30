@@ -192,7 +192,7 @@
                                                     <div class="control-group">
                                                         <label class="control-label">目的地城市</label>
                                                         <div class="controls">
-                                                            @Html.DropDownListFor(model => model.LogDetailModel.ToCity, new SelectList(new[] { "上海", "北京" }), new { @class = "span12 m-wrap" })
+                                                            @Html.DropDownListFor(model => model.LogDetailModel.ToCity, new SelectList(new[] { "上海", "北京" }, "北京"), new { @class = "span12 m-wrap" })
                                                             @Html.ValidationMessageFor(model => model.LogDetailModel.ToCity, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>

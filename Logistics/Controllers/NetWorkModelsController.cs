@@ -115,12 +115,12 @@ namespace Logistics.Controllers
             if (account == 6)
             {
                 Random ran = new Random();
-                RandKey = ran.Next(2, 3);
+                RandKey = ran.Next(2, 4);
             }
             if (account == 7)
             {
                 Random ran = new Random();
-                RandKey = ran.Next(4, 5);
+                RandKey = ran.Next(4, 6);
             }
             Storage storage = db.Storage.Find(id);
             LogDetail logDetail = db.LogDetail.Find(storage.PackNo);
