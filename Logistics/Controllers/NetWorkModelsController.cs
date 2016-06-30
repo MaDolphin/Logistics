@@ -28,11 +28,11 @@ namespace Logistics.Controllers
         // GET: Network/LogisticInfo
         public ActionResult DeliveryInfo()
         {
-            var temp=from b in db.Delivery select b;
+            var temp = from b in db.Delivery select b;
             return View(temp.ToList());
         }
 
-     
+
 
         //发货
         // GET: Network/Delivering
@@ -46,22 +46,24 @@ namespace Logistics.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delivering([Bind(Include = "PackNo,DeliveryClass")] Delivery delivery)
         {
-            int account=(int)Session["Account"];
-            String city="上海";
+            int account = (int)Session["Account"];
+            String city = "上海";
             if (account == 7)
                 city = "北京";
-            DateTime date=System.DateTime.Now;
+            DateTime date = System.DateTime.Now;
             LogDetail log = db.LogDetail.Find(delivery.PackNo);
-            if(log==null)
+            if (log == null)
                 return Content("<script >alert('货物尚未揽件，不能发货！');history.go(-1)</script >", "text/html");
-            else{
-                if(log.Status==0) {
-                    if(!log.FromCity.Equals(city))
+            else {
+                if (log.Status == 0)
+                {
+                    if (!log.FromCity.Equals(city))
                         return Content("<script >alert('货物不在本城市，不能发货！');history.go(-1)</script >", "text/html");
                 }
-                if(log.Status==1){
-                    if(!log.ToCity.Equals(city))
-                return Content("<script >alert('货物不在本城市，不能发货！');history.go(-1)</script >", "text/html");
+                if (log.Status == 1)
+                {
+                    if (!log.ToCity.Equals(city))
+                        return Content("<script >alert('货物不在本城市，不能发货！');history.go(-1)</script >", "text/html");
                 }
             }
 
@@ -77,13 +79,13 @@ namespace Logistics.Controllers
 
             //创建流程单
             Process check = db.Process.Find(delivery.PackNo);
-            if(check!=null)//查询退件
-                if(check.Status==1)
+            if (check != null)//查询退件
+                if (check.Status == 1)
                     return RedirectToAction("Delivering");
 
             Process pro = new Process();
             pro.PackNo = (int)delivery.PackNo;
-            pro.DeliveryNo=delivery.DeliveryNo;
+            pro.DeliveryNo = delivery.DeliveryNo;
             pro.DeliveryTime = date;
             pro.Network = (String)Session["UserName"];
             pro.UpdateTime = date;
@@ -93,7 +95,7 @@ namespace Logistics.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Delivering");
-            
+
         }
 
         public ActionResult SendManager()
@@ -110,7 +112,7 @@ namespace Logistics.Controllers
             int RandKey = 0;
             int account = (int)Session["Account"];
             User user = db.User.Find(account);
-            if(account == 6)
+            if (account == 6)
             {
                 Random ran = new Random();
                 RandKey = ran.Next(2, 3);
@@ -150,14 +152,17 @@ namespace Logistics.Controllers
 
             //流程信息填写
             Process process = db.Process.Find(logDetail.PackNo);
-            process.DispatchNo = dispatchNo;
-            process.DispatchTime = dispatch.DispatchTime;
-            process.CourierNo = dispatch.CourierNo.ToString();
-            process.Location = user.UserName;
-            process.UpdateTime = System.DateTime.Now;
-            db.Entry(process).State = EntityState.Modified;
-            db.SaveChanges();
-
+            if (process.Status == 0)
+            {
+                process.DispatchNo = dispatchNo;
+                process.DispatchTime = dispatch.DispatchTime;
+                User sender = db.User.Find(RandKey);
+                process.CourierNo = sender.UserName;
+                process.Location = user.UserName;
+                process.UpdateTime = System.DateTime.Now;
+                db.Entry(process).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             return RedirectToAction("../NetWorkModels/SendManager");
         }
     }

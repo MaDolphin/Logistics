@@ -105,7 +105,6 @@ namespace Logistics.Controllers
                 db.SaveChanges();
             }
 
-
             return RedirectToAction("../CourierModels/SendPackage");
         }
 

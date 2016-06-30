@@ -124,6 +124,20 @@
                     </div>
                 </div>
             }
+
+            @if (Model.Status == 3)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="~/Image/cd-icon-location.svg" alt="Location">
+                    </div>
+                    <div class="cd-timeline-content" style="background-color: #e9f0f5">
+                        <h2 style="font-family:微软雅黑;font-size:24px">退件签收</h2>
+                        <p style="font-family:微软雅黑;font-size:16px">您的快递退件完成</p>
+                        <span class="cd-date" style="font-family:微软雅黑;font-size:24px">@Model.UpdateTime</span>
+                    </div>
+                </div>
+            }
         </section>
     </div>
 </body>
